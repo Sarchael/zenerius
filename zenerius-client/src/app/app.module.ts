@@ -10,6 +10,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { HomeService } from './services/home.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
