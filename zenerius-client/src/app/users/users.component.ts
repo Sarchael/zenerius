@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '../_models/user';
 import { UserService} from '../services/user.service';
+import { UserDetails } from '../_models/userDetails';
 
 @Component({ templateUrl: 'users.component.html' })
 export class UsersComponent {
     loading = false;
-    users: User[];
+    userDetails: UserDetails;;
 
     constructor(private userService: UserService) { }
 
@@ -15,7 +15,7 @@ export class UsersComponent {
         this.loading = true;
         this.userService.getAll().pipe(first()).subscribe(users => {
             this.loading = false;
-            this.users = users;
+            this.userDetails = users;
         });
     }
 }

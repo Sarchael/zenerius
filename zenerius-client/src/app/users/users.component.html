@@ -3,8 +3,9 @@
     <div class="card-body">
         <h4>Users from secure api end point</h4>
         <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-        <ul *ngIf="users">
-            <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
-        </ul>
+        <p><span>Login: </span><span>{{userDetails.login}}</span></p>
+        <p><span>Email: </span><span>{{userDetails.email}}</span></p>
+        <p><span>Active: </span><span>{{userDetails.active}}</span></p>
+        <p><span>Email confirmed: </span><span>{{userDetails.emailConfirmed}}</span></p>
     </div>
 </div>

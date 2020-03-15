@@ -24,7 +24,7 @@ public class ZeneriusApplication {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:4200");
-        config.setAllowedHeaders(Arrays.asList("AUTHENTICATION_HEADER"));
+        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
