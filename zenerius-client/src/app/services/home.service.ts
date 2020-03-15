@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
 
-  private server_url = "http://localhost:8080";
+  private server_url = "http://localhost:2507";
 
   constructor(private httpClient : HttpClient) { }
 
   public get(): Observable<String>{
     console.log("request");
-    return this.httpClient.get(this.server_url + '/home/example',  {responseType: 'text'});
+    return this.httpClient.get(this.server_url + '/test/example',  {responseType: 'text'});
   }
 }
