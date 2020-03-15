@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
@@ -11,14 +12,22 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeService } from './services/home.service';
+import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { fakeBackendProvider } from './_helpers/fake-backend';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UsersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MatButtonModule,
     MatMenuModule,
@@ -33,7 +42,12 @@ import { HomeService } from './services/home.service';
     MatIconModule,
     MatCardModule
   ],
-  providers: [HomeService],
+  providers: [HomeService,        
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,12 @@
 <mat-toolbar color="primary">  
   <h1>  
-  My Angular Store  
+   Mountains app 
   </h1>  
-  <button mat-button routerLink="/">Home</button>  
-  <button mat-button routerLink="/about">About</button></mat-toolbar>
-  <router-outlet></router-outlet>
+  <button mat-button routerLink="/home">Home</button>  
+  <button mat-button routerLink="/about">About</button>
+  <button mat-button routerLink="/users">Users list</button>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
