@@ -1,25 +1,26 @@
-<div class="col-md-6 offset-md-3 mt-5">
-    <div class="card">
-        <h4 class="card-header">Rejestracja</h4>
-        <div class="card-body">
-            <form (ngSubmit)="onSubmit()">
-                <span [hidden]="hide">{{response}}</span>
-                <div class="form-group">
-                    <label for="username">Login</label>
-                    <input type="text" [(ngModel)]="signUpForm.username" class="form-control" />
-                
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" formControlName="email" [(ngModel)]="signUpForm.email" class="form-control" />
-
-                </div>
-                <div class="form-group">
-                    <label for="password">Hasło</label>
-                    <input type="password" formControlName="password" [(ngModel)]="signUpForm.password" class="form-control" />
-                </div>
-                <button type="submit">Zarejestruj</button>
-            </form>
-        </div>
+<div class="container-fluid bg">
+    <div class="row">
+      <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0"></div>
+      <div class="col-lg-4 col-md-6 col-sm-10 col-xs-12">
+        <form class="form-container" #userForm="ngForm" (ngSubmit)="onSubmit()">
+          <h1>Zarejestruj się</h1>
+          <div class="form-group">
+            <label for="Login">Login</label>
+            <input type="text" [(ngModel)]="signUpForm.login" class="form-control" id="login" name="login" />
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" [(ngModel)]="signUpForm.email" class="form-control" id="email" name="email" />
+          </div>
+          <div class="form-group">
+            <label for="Password">Hasło</label>
+            <input type="Password" [(ngModel)]="signUpForm.password" class="form-control" id="password" name="password" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block">Zarejestruj</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0"></div>
     </div>
-</div>
+  </div>
