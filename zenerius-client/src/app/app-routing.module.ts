@@ -5,12 +5,14 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

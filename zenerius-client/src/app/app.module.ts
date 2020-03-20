@@ -16,13 +16,14 @@ import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
-import { fakeBackendProvider } from './_helpers/fake-backend';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   exports: [
     MatButtonModule,
@@ -44,10 +46,7 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
   ],
   providers: [HomeService,        
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-    // provider used to create fake backend
-    fakeBackendProvider],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
