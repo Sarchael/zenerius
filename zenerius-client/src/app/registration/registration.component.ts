@@ -10,25 +10,32 @@ import { UserService } from '../services/user.service';
 export class RegistrationComponent implements OnInit {
 
   signUpForm: SignUpForm;
-  response: string;
-  hide = true;
+  password: string;
+  password2: string;
+  errMessage: string;
+  show: boolean;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.signUpForm = new SignUpForm();
-    this.hide = true;
+    this.show = false;
   }
 
   onSubmit(){
     this.signUpForm.gender="M";
-    this.userService.save(this.signUpForm).subscribe(data => {
-      this.response = "Pomyślnie zarejestrowano użytkownika";
-      this.hide = false;
-    }, err=> {
-      this.hide=false;
-        this.response = "Nieudane logowanie";
-    })
+    if(this.password === this.password2){
+      this.userService.save(this.signUpForm).subscribe(data => {
+        this.show = false;
+      }, err=> {
+        this.show = true;
+        this.errMessage = "Nieudane logowanie";
+      })
+    } else {
+      this.show = true;
+      this.errMessage = "Hasła muszą być identyczne"
+    }
+
   }
 
 }
