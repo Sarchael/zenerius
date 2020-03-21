@@ -22,9 +22,6 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(){
     this.signUpForm.gender="M";
-    // this.signUpForm.login="klajsdlkkda";
-    // this.signUpForm.password="jadlkasjajkak3da";
-    // this.signUpForm.email="askldakdasdasd0@as.pl";
     this.userService.save(this.signUpForm).subscribe(data => {
       this.response = "Pomyślnie zarejestrowano użytkownika";
       this.hide = false;

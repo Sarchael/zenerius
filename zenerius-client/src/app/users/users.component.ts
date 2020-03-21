@@ -7,7 +7,7 @@ import { UserDetails } from '../_models/userDetails';
 @Component({ templateUrl: 'users.component.html' })
 export class UsersComponent {
     loading = false;
-    userDetails: UserDetails;;
+    userDetails = new UserDetails();
 
     constructor(private userService: UserService) { }
 
