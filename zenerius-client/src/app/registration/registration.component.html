@@ -31,6 +31,10 @@
               </div>
               <input type="password" [(ngModel)]="password2"  class="form-control" id="password2" name="password2" placeholder="powtórz hasło">
             </div>
+            <mat-radio-group aria-label="Wybierz płeć" [(ngModel)]="signUpForm.gender" id="gender" name="gender" style="color: white;">
+              <mat-radio-button value="K" style="margin-right: 10px;">Kobieta</mat-radio-button>
+              <mat-radio-button value="M">Mężczyzna</mat-radio-button>
+            </mat-radio-group>
             <div class="form-group">
               <input type="submit" value="Zarejestruj się" class="btn float-right login_register_btn">
             </div>

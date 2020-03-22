@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { RegistrationComponent } from './registration/registration.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -35,14 +36,16 @@ import { RegistrationComponent } from './registration/registration.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [HomeService,        
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

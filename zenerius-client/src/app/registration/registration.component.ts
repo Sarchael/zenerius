@@ -12,6 +12,7 @@ export class RegistrationComponent implements OnInit {
   signUpForm: SignUpForm;
   password: string;
   password2: string;
+  gender: string;
   errMessage: string;
   show: boolean;
 
@@ -23,14 +24,19 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(){
-    this.signUpForm.gender="M";
     if(this.password === this.password2){
-      this.userService.save(this.signUpForm).subscribe(data => {
-        this.show = false;
-      }, err=> {
+      if(this.signUpForm.gender==="M" || this.signUpForm.gender==="K"){
+        this.signUpForm.password = this.password;
+        this.userService.save(this.signUpForm).subscribe(data => {
+          this.show = false;
+        }, err=> {
+          this.show = true;
+          this.errMessage = "Nieudane logowanie";
+        })
+      } else {
         this.show = true;
-        this.errMessage = "Nieudane logowanie";
-      })
+        this.errMessage = "Wybierz płeć";
+      }
     } else {
       this.show = true;
       this.errMessage = "Hasła muszą być identyczne"
