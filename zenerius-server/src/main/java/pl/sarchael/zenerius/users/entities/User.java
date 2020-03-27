@@ -1,6 +1,5 @@
 package pl.sarchael.zenerius.users.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.util.StringUtils;
 import pl.sarchael.zenerius.users.model.enums.Gender;
