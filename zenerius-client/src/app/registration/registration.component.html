@@ -5,16 +5,13 @@
           <h3>Rejestracja</h3>
         </div>
         <div class="card-body">
-          <div *ngIf="errorMessage">
-            <span *ngIf="errorMessage.login" class="info-text">{{errorMessage.login}}</span>
-            <span *ngIf="errorMessage.email" class="info-text">{{errorMessage.email}}</span>
-            <span *ngIf="errorMessage.password" class="info-text">{{errorMessage.password}}</span>
-            <span *ngIf="errorMessage.gender" class="info-text">{{errorMessage.gender}}</span>
-          </div>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="input-group form-group">
               <div *ngIf="submitted && f.login.errors" class="info-text">
                 <div *ngIf="f.login.errors.required">Login jest wymagany</div>
+              </div>
+              <div *ngIf="errorMessage" class="info-text">
+                <span *ngIf="errorMessage.login">{{errorMessage.login}}</span>
               </div>
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>person</mat-icon></span>
@@ -25,6 +22,9 @@
               <div *ngIf="submitted && f.email.errors" class="info-text">
                 <div *ngIf="f.email.errors.required">Email jest wymagany</div>
               </div>
+              <div *ngIf="errorMessage" class="info-text">
+                <span *ngIf="errorMessage.email">{{errorMessage.email}}</span>
+              </div>
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>email</mat-icon></span>
               </div>
@@ -32,7 +32,10 @@
             </div>
             <div class="input-group form-group">
               <div *ngIf="submitted && f.password.errors" class="info-text">
-                <div *ngIf="f.password.errors.required">Hasło jest wymagane</div>
+                <span *ngIf="f.password.errors.required">Hasło jest wymagane</span>
+              </div>
+              <div *ngIf="errorMessage" class="info-text">
+                <div *ngIf="errorMessage.password">{{errorMessage.password}}</div>
               </div>
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
@@ -53,6 +56,9 @@
             </div>
             <div *ngIf="submitted && f.gender.errors" class="info-text">
               <div *ngIf="f.gender.errors.required">Wybierz płeć</div>
+            </div>
+            <div *ngIf="errorMessage" class="info-text">
+              <span *ngIf="errorMessage.gender" >{{errorMessage.gender}}</span>
             </div>
             <mat-radio-group aria-label="Wybierz płeć" formControlName="gender" id="gender" name="gender" style="color: white;">
               <mat-radio-button value="K" style="margin-right: 10px;">Kobieta</mat-radio-button>
