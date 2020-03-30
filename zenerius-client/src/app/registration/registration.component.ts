@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
   signUpForm: SignUpForm;
+  errorMessage: SignUpForm
   registerForm: FormGroup;
   submitted = false;
   password: string;
@@ -59,12 +60,15 @@ export class RegistrationComponent implements OnInit {
       this.userService.save(this.signUpForm).subscribe(data => {
         this.router.navigate([this.returnUrl]);
       }, err => {
-        this.error = "Nieudana rejestracja";
+        this.errorMessage = new SignUpForm();
+        this.errorMessage.login = err.login;
+        this.errorMessage.email = err.email;
+        this.errorMessage.password = err.password;
+        this.errorMessage.gender = err.gender;
       })
     } else {
       this.error = "Hasła muszą być identyczne";
     }
 
   }
-
 }

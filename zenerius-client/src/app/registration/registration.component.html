@@ -5,7 +5,12 @@
           <h3>Rejestracja</h3>
         </div>
         <div class="card-body">
-          <span *ngIf="error" class="info-text">{{error}}</span>
+          <div *ngIf="errorMessage">
+            <span *ngIf="errorMessage.login" class="info-text">{{errorMessage.login}}</span>
+            <span *ngIf="errorMessage.email" class="info-text">{{errorMessage.email}}</span>
+            <span *ngIf="errorMessage.password" class="info-text">{{errorMessage.password}}</span>
+            <span *ngIf="errorMessage.gender" class="info-text">{{errorMessage.gender}}</span>
+          </div>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="input-group form-group">
               <div *ngIf="submitted && f.login.errors" class="info-text">
@@ -37,6 +42,9 @@
             <div class="input-group form-group">
               <div *ngIf="submitted && f.password2.errors" class="info-text">
                 <div *ngIf="f.password2.errors.required">Powtórz hasło</div>
+              </div>
+              <div *ngIf="submitted && error" class="info-text">
+                <div *ngIf="error">{{error}}</div>
               </div>
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
