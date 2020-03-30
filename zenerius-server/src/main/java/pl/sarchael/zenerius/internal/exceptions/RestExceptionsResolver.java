@@ -26,6 +26,6 @@ public class RestExceptionsResolver extends ResponseEntityExceptionHandler {
                                           .stream()
                                           .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
 
-        return ResponseEntity.ok(errorsMap);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorsMap);
     }
 }
